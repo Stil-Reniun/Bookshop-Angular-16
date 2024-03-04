@@ -1,0 +1,143 @@
+<div class="container mt-4 mb-3">
+    <div class="row">
+        <div class="col-md-5">
+            <ngb-carousel>
+                <ng-template ngbSlide>
+                    <div class="picsum-img-wrapper">
+                        <img [src]="images[0]" alt="" />
+                    </div>
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                    <div class="picsum-img-wrapper">
+                        <img [src]="images[1]" alt="" />
+                    </div>
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                    <div class="picsum-img-wrapper">
+                        <img [src]="images[2]" alt="" />
+                    </div>
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+
+        <div class="col-md-7">
+            <h1 class="fs-2 text-center lh-1 fw-bold text-dark fw-viaoda">Registrarse en The Secret of
+                the
+                Asius</h1>
+            <form class="" (ngSubmit)="formRegisterSubmit()">
+                <mat-stepper orientation="vertical">
+                    <mat-step>
+                        <ng-template matStepLabel>ID y Contraseña</ng-template>
+                        <div class="row">
+                            <div class="col pt-2">
+                                <mat-form-field appearance="outline" class="fw-viaoda fw-semibold">
+                                    <mat-label>ID</mat-label>
+                                    <input matInput placeholder="Ingrese su ID de usuario..." required
+                                        [(ngModel)]="userFormData.username" name="username">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col pt-2">
+                                <mat-form-field appearance="outline" class="fw-viaoda fw-semibold">
+                                    <mat-label>Contraseña</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'"
+                                        placeholder="Ingrese su contraseña..." required
+                                        [(ngModel)]="userFormData .password" name="password">
+                                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button type="button" mat-button matStepperNext>Siguente</button>
+                    </mat-step>
+
+                    <mat-step>
+                        <ng-template matStepLabel>Nombres y Apellidos</ng-template>
+                        <div class="row">
+                            <div class="col pt-2">
+                                <mat-form-field appearance="outline" class="fw-viaoda fw-semibold">
+                                    <mat-label>Nombres</mat-label>
+                                    <input matInput placeholder="Ingrese su nombre..." required
+                                        [(ngModel)]="userFormData.name" name="name">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col pt-2">
+                                <mat-form-field appearance="outline" class="fw-viaoda fw-semibold">
+                                    <mat-label>Apellidos</mat-label>
+                                    <input matInput placeholder="Ingrese sus apellidos..." required
+                                        [(ngModel)]="userFormData.lastName" name="lastName">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button type="button" mat-button matStepperPrevious>Atras</button>
+                        <button type="button" mat-button matStepperNext>Siguente</button>
+                    </mat-step>
+
+                    <mat-step>
+                        <ng-template matStepLabel>Correo Electrónico y Teléfono</ng-template>
+                        <div class="row">
+                            <div class="col pt-2">
+                                <mat-form-field appearance="outline" class="fw-viaoda fw-semibold">
+                                    <mat-label class="fw-josefin">Email</mat-label>
+                                    <input matInput placeholder="example@gmail.com" [formControl]="email" required
+                                        [(ngModel)]="userFormData.email" name="email">
+                                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col pt-2">
+                                <mat-form-field appearance="outline" class="fw-viaoda fw-semibold">
+                                    <mat-label class="fw-josefin">Teléfono (+51)</mat-label>
+                                    <input matInput placeholder="Ingrese su telefono" class="fw-josefin" required
+                                        [(ngModel)]="userFormData.phone" #postalCode maxlength="9" name="phone">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button type="button" mat-button matStepperPrevious>Atras</button>
+                        <button type="button" mat-button matStepperNext>Siguente</button>
+                    </mat-step>
+
+
+                    <mat-step>
+                        <ng-template matStepLabel>Perfil</ng-template>
+                            <mat-form-field appearance="outline" class=" pt-2 w-100 fw-viaoda fw-semibold">
+                                <mat-label>Ocupación</mat-label>
+                                <mat-select required [(ngModel)]="userFormData.perfil" name="perfil">
+                                    <mat-option value="Lector">Lector</mat-option>
+                                    <mat-option value="Escritor">Escritor</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        <button type="button" mat-button matStepperPrevious>Atras</button>
+                    </mat-step>
+
+                </mat-stepper>
+                <div class="text-center">
+                    <button type="submit" mat-fab extended color="secondary" class="w-75 fw-viaoda mb-2 fw-bold">
+                        Guardar
+                    </button>
+
+                    <button type="button" (click)="cancelRegister()" mat-fab extended color="warn" class="w-75 fw-bold fw-viaoda">
+                        Cancelar
+                    </button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

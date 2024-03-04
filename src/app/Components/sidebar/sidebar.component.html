@@ -1,0 +1,73 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <div class="d-flex flex-column">
+        <h3 class="mb-1 fs-3  text-center fw-bold fw-kau">
+          Panel Administrativo
+        </h3>
+        <hr class="my-2 text-center">
+        <div class="nav nav-pills flex-column">
+
+          <li class="nav-item fw-kau  fs-5 px-2 mb-2 ">
+            <a  class="nav-link text-dark" routerLink="/admin" >
+              <i class="bi bi-house-door pe-none me-2"></i>Inicio
+            </a>
+          </li>
+
+          <li class="nav-item fw-kau fs-5 px-2 mb-2 ">
+            <a  class="nav-link text-dark" routerLink="/admin/perfil" >
+              <i class="bi bi-person-fill pe-none me-2"></i>Perfil
+            </a>
+          </li>
+
+          <li class="nav-item fw-kau  fs-5 px-2 mb-2 ">
+            <a  class="nav-link text-dark" routerLink="/admin/users" >
+              <i class="bi bi-people-fill pe-none me-2"></i>Usuarios
+            </a>
+          </li>
+
+          <li class="nav-item fw-kau fs-5 px-2 mb-2 ">
+            <a  class="nav-link text-dark" routerLink="/admin/books" >
+              <i class="bi bi-journals pe-none me-2"></i>Libros
+            </a>
+          </li>
+
+          <li class="nav-item fw-kau fs-5 px-2 mb-2 ">
+            <a  class="nav-link text-dark" >
+              <i class="bi bi-calendar-event pe-none me-2"></i>Eventos
+            </a>
+          </li>
+
+          <li class="nav-item fw-kau fs-5 px-2 mb-2 ">
+            <a  class="nav-link text-dark">
+              <i class="bi bi-grid pe-none me-2"></i>Servicios
+            </a>
+          </li>
+
+
+
+
+
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="dark">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="fw-baby fs-4 fw-bold ">Menu</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

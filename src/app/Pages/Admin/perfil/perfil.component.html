@@ -1,0 +1,70 @@
+<div class="container mt-2">
+    <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb mt-3 ">
+            <li class="breadcrumb-item active fw-semibold  fs-2 fw-kau "><a>Admin</a></li>
+            <li class="breadcrumb-item fs-4 fw-bold fw-kau">Perfil</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-profile text-center">
+                <div class="card-avatar">
+                    <div class="figure mt-2">
+                        <img class="img rounded-circle" src="{{userData.img}}" alt="" width="180" height="180px" />
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-category">
+                        <p class="disabled text-center fw-josefin fs-4 fw-bold">
+                            {{userData.authorities[0].authority}}</p>
+                    </h5>
+                    <h4 class="card-title fs-5 fw-josefin fw-bold">{{userData.name}}</h4>
+                    <p class="card-description ">
+                        "Como administrador de la web, eres el responsable de mantener el sitio en funcionamiento y
+                        brindar una excelente experiencia al usuario. ¡Tu trabajo es crucial para el éxito de nuestra
+                        presencia en línea!" </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title class="fs-3 fw-bold fw-josefin mb-2">Detalles</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <mat-label class="text-dark fs-4 fw-josefin fw-semibold">Nombre</mat-label>
+                            <input matInput value=" {{userData.name}}" disabled class="fw-semibold">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label class="text-dark fs-4 fw-josefin fw-semibold">Apellidos</mat-label>
+                            <input matInput value=" {{userData.lastName}}" disabled class="fw-semibold">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label class="text-dark fs-4 fw-josefin fw-semibold">Correo electronico</mat-label>
+                            <input matInput value=" {{userData.email}}" disabled class="fw-semibold">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width ">
+                            <mat-label class="text-dark fs-4 fw-josefin fw-semibold">Numero de telefono</mat-label>
+                            <input matInput value=" {{userData.phone}}" disabled class="fw-semibold">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width ">
+                            <mat-label class="text-dark fs-4 fw-josefin fw-semibold">Perfil</mat-label>
+                            <input matInput value=" {{userData.perfil}}" disabled class="fw-semibold">
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+
+                <mat-card-actions class="ms-auto p-2">
+                    <button mat-raised-button color="warn" class="rounded-4 w-100">Editar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

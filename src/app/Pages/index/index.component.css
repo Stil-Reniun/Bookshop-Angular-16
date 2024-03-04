@@ -1,0 +1,15 @@
+#bg-video {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -100;
+    background-image: url("https://res.cloudinary.com/dxrn8ww6t/image/upload/v1687450263/Asius/wallpaperbetter_b9iahy.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

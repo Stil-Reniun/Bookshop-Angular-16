@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
+
+.fw-josefin{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.fw-viaoda{
+    font-family: 'Viaoda Libre', serif;
+}
+
+.fw-baby{
+    font-family: 'Oooh Baby', cursive;
+}
+
+.fw-kau{
+    font-family: 'Kaushan Script', cursive;
+}
+.nav-item a:hover{
+  background-color: rgb(19, 18, 18);
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 210px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

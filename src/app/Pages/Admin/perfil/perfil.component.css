@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+.fw-josefin{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.fw-viaoda{
+    font-family: 'Viaoda Libre', serif;
+}
+
+.fw-baby{
+    font-family: 'Oooh Baby', cursive;
+}
+
+.fw-kau{
+    font-family: 'Kaushan Script', cursive;
+}
+
+.card-body p{
+    text-align: justify;
+    font-size: 15px;
+}
+.card-body a:hover{
+    background: #e55039;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}

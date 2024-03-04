@@ -1,0 +1,194 @@
+<div class="container">
+    <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb mt-3 ">
+            <li class="breadcrumb-item fw-semibold  fs-2 fw-kau ">Admin</li>
+            <li class="breadcrumb-item fs-4 fw-bold fw-viaoda fw-kau">Todos los libros</li>
+        </ol>
+    </nav>
+    <div class="card mb-3" *ngFor="let i of booksData">
+        <div class="row g-0">
+            <div class="col-md-2">
+                <img src="{{i.img}}" class="img-fluid rounded-start">
+                <div class=" text-center pt-1">
+                    <p class="fw-josefin fw-bolder"> <strong>Paginas: </strong>{{i.pages}}</p>
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                <div class="card-body">
+                    <div class="d-flex ">
+                        <h4 class="p-2 fw-bold fw-josefin">{{i.title}}</h4>
+                        <p class="p-2 ms-auto fst-italic fw-josefin text-uppercase">{{i.genreLiterary}}</p>
+                        <p class="ms-auto p-2 fw-bold fw-josefin">{{i.authorBook}}</p>
+
+                    </div>
+                    <p class="px-2 text-justify fw-josefin"><strong class="">Sinopsis: </strong>{{i.synopsis}}</p>
+
+                    <div class="row px-2 mb-2">
+                        <div class="col fw-josefin"><strong>Editorial: </strong>{{i.editorial}}</div>
+                        <div class="col fw-josefin"><strong>Año de publicacion: </strong>{{i.dayPublication}}</div>
+                        <div class="col fw-josefin"><strong>Formato: </strong>{{i.formats}}</div>
+                    </div>
+
+                    <div class="row px-2 mb-2">
+                        <div class="col fw-josefin"><strong>Documento: </strong>{{i.document}}</div>
+
+                    </div>
+
+                    <div class="row px-2 mb-2">
+                        <div class="col fw-josefin"><strong>ISBN: </strong>{{i.isbn}}</div>
+                        <div class="col fw-josefin"><strong>Idioma: </strong>{{i.language}}</div>
+                        <div class="col fw-josefin"><strong>Estado: </strong>{{i.status}}</div>
+                    </div>
+
+                    <div class="d-flex fw-josefin">
+                        <div class="p-2 fw-bold fw-josefin"><button type="button" class="btn btn-outline-success"
+                                [routerLink]="['/admin/edit-books']" [queryParams]="{id: i.idBook}">
+                                <i class="bi bi-pen"></i> Editar</button>
+                        </div>
+
+                        <div class="p-2 fw-bold">
+                            <button type="button" class="btn btn-outline-danger fw-josefin"
+                                (click)="deleteByIdBook(i.idBook)">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                        </div>
+                        <div class="ms-auto p-2 fw-josefin fs-5"><strong class="fw-bold">Costo:
+                            </strong>S/{{i.cost}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="openModal(content)" type="button"
+        class="btn btn-dark position-fixed bottom-0 end-0 mb-3 me-3 rounded-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="35" fill="currentColor" class="bi bi-plus-lg"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+        </svg>
+    </button>
+
+    <ng-template #content let-modal>
+        <div class="modal-header text-center">
+            <h1 class=" fw-baby fw-bold fs-5" id="lg">Agregar nuevo libro</h1>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="formSubmitBook()">
+                <mat-form-field appearance="outline" class="input-group">
+                    <mat-label class="fw-josefin">Nombre del libro</mat-label>
+                    <input matInput placeholder="Ingrese el nombre del libro..." class="fw-josefin" required
+                        [(ngModel)]="newBookData.title" name="title">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="fw-josefin">Imagen del libro (URL)</mat-label>
+                    <input matInput placeholder="Ingrese la imagen del libro..." class="fw-josefin" required
+                        [(ngModel)]="newBookData.img" name="img">
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label class="fw-josefin">Autor del liro</mat-label>
+                            <input matInput placeholder="Ingrese el autor del libro..." class="fw-josefin" required
+                                [(ngModel)]="newBookData.author" name="author">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label class="fw-josefin">Genero literario del libro</mat-label>
+                            <input matInput placeholder="Ingrese el genero literario..." class="fw-josefin" required
+                                [(ngModel)]="newBookData.genreLiterary" name="genreLiterary">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label class="fw-josefin">Paginas del libro</mat-label>
+                            <input type="number" matInput placeholder="Ingrese las paginas..." class="fw-josefin"
+                                required [(ngModel)]="newBookData.pages" name="pages">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="fw-josefin">Sinopsis del libro</mat-label>
+                    <textarea matInput placeholder="Ingrese la sinopsis..." required class="fw-josefin" required
+                        [(ngModel)]="newBookData.synopsis" name="synopsis">
+                    </textarea>
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label class="fw-josefin">Formato del libro digital</mat-label>
+                            <input matInput placeholder="Ingrese el formato..." class="fw-josefin" required
+                                [(ngModel)]="newBookData.formats" name="formats">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Codigo ISBN</mat-label>
+                            <input matInput placeholder="Ingrese el codigo..." class="fw-josefin" required
+                                [(ngModel)]="newBookData.isbn" name="isbn">
+                        </mat-form-field>
+                    </div>
+                    <div class="col d-flex">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Fecha de publicacion</mat-label>
+                            <input matInput class="fw-josefin d-flex" required name="dp" placeholder="yyyy-mm-dd"
+                                [(ngModel)]="newBookData.dayPublication" name="dayPublication">
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="fw-josefin">Documento del libro (URL)</mat-label>
+                    <input matInput placeholder="Ingrese el documento.." class="fw-josefin" required
+                        [(ngModel)]="newBookData.document" name="document">
+                </mat-form-field>
+
+
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Idioma del libro</mat-label>
+                            <input matInput placeholder="Ingrese el idioma..." class="fw-josefin" required
+                                [(ngModel)]="newBookData.language" name="language">
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label class="fw-josefin">Costo del libro</mat-label>
+                            <input type="number" matInput placeholder="Ingrese el costo..." class="fw-josefin" required
+                                [(ngModel)]="newBookData.cost" name="cost">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label class="fw-josefin">Estado del libro</mat-label>
+                            <input matInput placeholder="Ingrese el estado..." class="fw-josefin" required
+                                [(ngModel)]="newBookData.status" name="status">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" mat-fab extended color="secondary" class="w-50 fw-viaoda fw-bold px-3">
+                        Guardar
+                    </button>
+
+                    <button type="button" mat-fab extended color="warn" class="w-50 fw-viaoda fw-bold">
+                        Cancelar
+                    </button>
+                </div>
+
+
+            </form>
+        </div>
+    </ng-template>
+</div>

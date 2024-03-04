@@ -1,0 +1,32 @@
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+            <figure>
+                <img class="img-fluid text-center" src="https://res.cloudinary.com/duhdn1adv/image/upload/v1709567043/WhatsApp_Image_2024-03-02_at_18.52.35_43588be7_knt9dz.jpg"
+                height="580">
+            </figure>
+            <h1 class="fs-1 fw-bold fw-baby">The Secret Of The Asius</h1>
+        </div>
+        <div class="col-md-5">
+            <h1 class="fw-josefin text-center fw-bold fs-2">Iniciar Sesión</h1>
+            <form class="p-4 p-md-5 border rounded-3 bg-light" (ngSubmit)="formSubmit()">
+                <mat-form-field appearance="outline" class="w-100 fw-viaoda fw-semibold">
+                    <mat-label>ID</mat-label>
+                    <input matInput placeholder="Ingresar el nombre de su usuario" required
+                        [(ngModel)]="dataUserLogin.username" name="username">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100 fw-viaoda fw-semibold">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput  [type]="hide ? 'password' : 'text'" placeholder="Ingresar su contraseña" required
+                        [(ngModel)]="dataUserLogin.password" name="password">
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <button mat-fab extended color="warn" class="w-100 fw-josefin fs-5">Ingresar</button>
+                <hr class="my-4">
+            </form>
+        </div>
+    </div>
+</div>
